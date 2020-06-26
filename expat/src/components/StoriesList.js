@@ -1,7 +1,8 @@
 /* build stories list here*/
 import React from "react";
+import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-// import DeleteStory from "../actions/DeleteStory";
+import AddStory from "../actions/AddStory";
 
 
 class StoriesList extends React.Component {
@@ -26,6 +27,13 @@ class StoriesList extends React.Component {
         this.setState({ ...this.state, isLoading: false });
       });
   };
+
+  saveStory = () => {
+    const addToSavedList = this.props.addToSavedList;
+    addToSavedList(this.state.story);
+  };
+
+
   delete = (id) => {
     axiosWithAuth()
       .delete(`/posts/${id}`)
@@ -38,12 +46,14 @@ class StoriesList extends React.Component {
   };
   render() {
     return (
+      
       <div className="StoriesList">
         <h2>My Stories</h2>
+        <AddStory />
         {this.state.isLoading && <p>Loading...</p>}
         <div className="ListOfPosts">
           {this.state.stories.map((story) => (
-            <div key={story.id}>
+            <div key={story.id} className="Post">
               <img
                 src={`${story.photo}`}
                 alt="StoryPhoto"
@@ -56,6 +66,7 @@ class StoriesList extends React.Component {
               <span>{`${story.story}`}</span>
               <br />
               <button onClick={() => this.delete(story.id)}>DELETE</button>
+              <button> <Link to={`/update-story/${story.id}`}>Edit Story</Link></button>
             </div>
           ))}
         </div>

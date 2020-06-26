@@ -1,8 +1,5 @@
 // Sign up Form
 import React, {useState} from "react";
-//import { useForm, Controller } from "react-hook-form";
-//import axiosWithAuth from "../../utils/axiosWithAuth";
-
 
 
 export default function SignUpForm() {
@@ -15,7 +12,6 @@ export default function SignUpForm() {
 
   const [signUp, setSignUp] = useState(defaultValues) 
 
-//equals anonymous function
 const onHandleChange = (e) => {
   const name = e.target.name
   const value = e.target.value
