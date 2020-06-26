@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import AddStory from "../actions/AddStory";
 
+import { connect } from 'react-redux';
+import { getData } from "../actions";
 
 class StoriesList extends React.Component {
   constructor() {
@@ -74,4 +76,14 @@ class StoriesList extends React.Component {
     );
   }
 }
-export default StoriesList;
+
+const mapStateToProps = state => {
+  return {
+    data: state.data,
+    error: state.error
+  };
+};
+
+export default connect(mapStateToProps, { getData })(StoriesList);
+
+// export default StoriesList;

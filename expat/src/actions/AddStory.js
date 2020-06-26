@@ -21,6 +21,8 @@ class AddStory extends React.Component{
         .post("/posts", this.state.story)
         .then(res => {
             console.log("Add Post Values", this.state.story)
+            // props.setSavedList([...props.savedList, res])
+            // props.history.push('/stories')
         })
         .catch(err => console.log("Add Post Error", err))
     }
