@@ -31,7 +31,7 @@ const onHandleChange = (e) => {
   };
 
   const handleSignUp = e =>{
-    e.preventDefault()
+    // e.preventDefault()
     
     const newUser = {
       name: signUp.name,
@@ -39,10 +39,10 @@ const onHandleChange = (e) => {
       email: signUp.email,
    
     }
-    console.log("new user input log",handleSignUp)
+    console.log("new user input log",newUser)
     
     axios
-    .post('/auth/register',newUser)
+    .post('https://expat-digital-journal.herokuapp.com/api/auth/register',handleSignUp)
     .then(
         res=>{console.log("axios auth from signup form",res)}
     )
@@ -52,7 +52,7 @@ const onHandleChange = (e) => {
   return (
     <div>
       <h2>Sign Up Form</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} handleSignUp={handleSignUp()}>
       <input
         value={signUp.name}
         onChange={onHandleChange}
