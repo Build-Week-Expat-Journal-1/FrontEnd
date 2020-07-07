@@ -7,6 +7,7 @@ import StoriesList from './components/StoriesList';
 import PrivateRoute from "./components/PrivateRoute";
 import StoryPutUpdate from './actions/EditStory';
 import AddStory from "./actions/AddStory";
+import SignUpForm from './components/signUP_form';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 
       <div className="App">
         <Route  exact path="/" component={Login} />
+        <Route  exact path="/sign-up" component={SignUpForm} />
         <PrivateRoute exact path="/stories" component={StoriesList} />
         <PrivateRoute exact path="/add-story" component={AddStory} />
         <Route

@@ -1,5 +1,10 @@
 // Sign up Form
 import React, {useState} from "react";
+import { useForm, /*Controller*/ } from "react-hook-form";
+// import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from 'axios';
+// import {useForm} from "react-hook-form";
+
 
 
 export default function SignUpForm() {
@@ -12,6 +17,7 @@ export default function SignUpForm() {
 
   const [signUp, setSignUp] = useState(defaultValues) 
 
+//equals anonymous function
 const onHandleChange = (e) => {
   const name = e.target.name
   const value = e.target.value
@@ -19,7 +25,7 @@ const onHandleChange = (e) => {
   setSignUp({[name]:value})
 }
 
-  const { register, handleSubmit, errors, reset } = useForm();
+  const {handleSubmit, /*register, handleSubmit, errors, reset*/ } = useForm();
   const onSubmit = (data) => { 
     console.log(data);
   };
@@ -33,10 +39,12 @@ const onHandleChange = (e) => {
       email: signUp.email,
    
     }
+    console.log("new user input log",newUser)
     
-    axiosWithAuth('//make sure to update',newUser)
+    axios
+    .post('/auth/register',newUser)
     .then(
-        res=>{console.log(res)}
+        res=>{console.log("axios auth from signup form",res)}
     )
     .catch(err => console.log(err))
     }

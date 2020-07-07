@@ -1,31 +1,33 @@
-import { FETCH_DATA, UPDATE_DATA, SET_ERROR } from "../actions";
+import { ADD_STORY, EDIT_STORY } from "../actions";
 
-const initialState = {
-    data: [],
-    isFetchingData: false,
-    error: ""
+export const initialState = {
+    //state for adding a story
+    story: {
+        id: '',
+        category: '',
+        story: '',
+        posted_date: '',
+        photo: ''
+    }
 }
 
 
 export const storyReducer = (state = initialState, action) => {
+    console.log("state & action from reducer.js",state, action)
     switch(action.type) {
-        case FETCH_DATA:
+        case ADD_STORY:
             return {
                 ...state,
-                isFetchingData: true,
-                data: []
+                category: action.payload.category,
+                story: action.payload.story,
+                photo: action.payload.photo
             }
-        case UPDATE_DATA:
+        case EDIT_STORY:
             return {
                 ...state,
-                isFetchingData: false,
-                data: action.payload
-            }
-        case SET_ERROR:
-            return {
-                ...state,
-                isFetchingData: false,
-                error: action.payload
+                category: action.payload.category,
+                story: action.payload.story,
+                photo: action.payload.photo
             }
         default:
             return state
@@ -33,3 +35,4 @@ export const storyReducer = (state = initialState, action) => {
 
 
 }
+export default storyReducer

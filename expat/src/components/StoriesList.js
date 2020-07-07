@@ -3,9 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import AddStory from "../actions/AddStory";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import { connect } from 'react-redux';
-import { getData } from "../actions";
+
+// import DeleteStory from "../actions/DeleteStory";
+
 
 class StoriesList extends React.Component {
   constructor() {
@@ -51,7 +53,7 @@ class StoriesList extends React.Component {
       
       <div className="StoriesList">
         <h2>My Stories</h2>
-        <AddStory />
+        <Router><AddStory /></Router>
         {this.state.isLoading && <p>Loading...</p>}
         <div className="ListOfPosts">
           {this.state.stories.map((story) => (
@@ -76,14 +78,4 @@ class StoriesList extends React.Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    data: state.data,
-    error: state.error
-  };
-};
-
-export default connect(mapStateToProps, { getData })(StoriesList);
-
-// export default StoriesList;
+export default StoriesList;

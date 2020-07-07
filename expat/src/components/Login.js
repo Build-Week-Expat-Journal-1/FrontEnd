@@ -1,7 +1,8 @@
 /* build the login page here */
 import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+
 
 const Login = props => {
     const [credentials,setCredentials] = useState({
@@ -41,7 +42,14 @@ const Login = props => {
                     <input type="password" name="password" placeholder="password" onChange={onChangeHandler} />
                     <button>login</button>
                 </form>
+
+                <div>
+                    <h2>New User?</h2>
+                    <h2>Register Here...    </h2>
+                    <Link to="/sign-up">Sign Up</Link>
+                </div>
             </div>
+           
     );
 };
 

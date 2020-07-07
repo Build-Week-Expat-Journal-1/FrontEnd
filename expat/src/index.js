@@ -11,6 +11,7 @@ import { storyReducer as reducer } from "./reducers/reducer";
 
 
 const store = createStore(reducer, applyMiddleware(thunk))
+console.log("current state index.js store",store.state)
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,
