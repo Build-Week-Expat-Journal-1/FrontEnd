@@ -17,7 +17,7 @@ const StoryPutUpdate = (props, match, history)=>{
         }
     );
 
-    const [state, dispatch] = useReducer(storyReducer, initialState)
+    const [state] = useReducer(storyReducer, initialState)
 
     console.log("console log state in EditStory",state);
 

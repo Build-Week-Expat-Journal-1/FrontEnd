@@ -39,7 +39,7 @@ const onHandleChange = (e) => {
       email: signUp.email,
    
     }
-    console.log("new user input log",newUser)
+    console.log("new user input log",handleSignUp)
     
     axios
     .post('/auth/register',newUser)
